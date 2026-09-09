@@ -2,12 +2,18 @@
 
 import {ref} from "vue";
 
+interface User {
+  name: string,
+  picture: string,
+  age: number,
+  nb: string
+}
+
 const luckyNumber = ()=>{
   return (Math.random() * 100).toFixed(0)
 }
 
-
-const user = ref({
+const user = ref<User>({
   "name": "Dr. Mario",
   "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf-g6h0Cby6BYOpLIsfIk8l9xt3MgGBlb_NCAlKaHugw&s=10",
   "age": 30,
