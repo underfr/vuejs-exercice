@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 
-let nb = ref(0)
+let nb = ref<number>(0)
 const increase = ()=>{
   return nb.value = nb.value + 100
 }
