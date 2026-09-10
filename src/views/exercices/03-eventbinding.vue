@@ -7,7 +7,8 @@ const increase = ()=>{
   return nb.value = nb.value + 100
 }
 const decrease = ()=>{
-  return nb.value = nb.value - 55
+  const newNb = nb.value - 55
+  nb.value = newNb < 0 ? 0 : newNb
 }
 
 </script>
