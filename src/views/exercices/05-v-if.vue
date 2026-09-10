@@ -11,6 +11,9 @@ function addMovie() {
   movie.value = "";
 }
 
+function removeMovie(index: number) {
+  movieList.value.splice(index, 1);
+}
 </script>
 
 <template>
@@ -32,7 +35,7 @@ function addMovie() {
               v-model="movie"
               @keyup.enter="addMovie"
           >
-          <button class="btn btn-primary join-item" @click="addMovie">
+          <button class="btn btn-primary join-item mt-3" @click="addMovie">
             Ajouter
           </button>
         </div>
@@ -42,7 +45,13 @@ function addMovie() {
         </div>
 
         <ul v-else class="mt-4 divide-y divide-base-300">
-          Vos films: {{movieList}}
+          <li
+              v-for="(film, i) in movieList"
+              :key="i"
+              class="flex items-center justify-between gap-2 py-3 badge badge-primary"
+          >
+            <span class="truncate cursor-pointer mb-5" @click="removeMovie(i)">{{i+1}} - {{ film }} - x</span>
+          </li>
         </ul>
       </div>
     </div>
