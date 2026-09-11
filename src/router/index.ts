@@ -1,5 +1,6 @@
 import {createWebHistory, createRouter, type RouteRecordRaw} from "vue-router";
 import {exerciceRoutes} from "./exercices.ts";
+import {tpRoutes} from "./tp.ts";
 
 const routes: RouteRecordRaw[] = [
     {
@@ -28,6 +29,8 @@ const routes: RouteRecordRaw[] = [
     },
     { path: '/ex', name: 'ex', component: () => import('../views/ExercicesView.vue') },
     ...exerciceRoutes,
+    { path: '/tp', name: 'tp', component: () => import('../views/TpView.vue') },
+    ...tpRoutes,
 ]
 
 const router = createRouter({

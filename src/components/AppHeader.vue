@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { exerciceRoutes } from '../router/exercices'
+import {tpRoutes} from "../router/tp.ts";
 
 const search = ref('')
 const route = useRoute()
@@ -43,7 +44,23 @@ watch(
               {{ link.label }}
             </RouterLink>
           </li>
-
+          <li>
+            <details>
+              <summary>TP</summary>
+              <ul class="max-h-72 overflow-y-auto">
+                <li>
+                  <RouterLink to="/tp" exact-active-class="menu-active">
+                    Tous les TP
+                  </RouterLink>
+                </li>
+                <li v-for="tp in tpRoutes" :key="tp.path">
+                  <RouterLink :to="tp.path" active-class="menu-active">
+                    {{ tp.meta?.title }}
+                  </RouterLink>
+                </li>
+              </ul>
+            </details>
+          </li>
           <li>
             <details>
               <summary>Exercices</summary>
@@ -76,6 +93,25 @@ watch(
           </RouterLink>
         </li>
 
+        <li>
+          <details>
+            <summary :class="{ 'menu-active': route.path.startsWith('/tp') }">
+              TP
+            </summary>
+            <ul class="bg-base-100 rounded-t-none z-1 w-56 p-2 shadow max-h-96 overflow-y-auto">
+              <li>
+                <RouterLink to="/tp" exact-active-class="menu-active">
+                  Tous les TP
+                </RouterLink>
+              </li>
+              <li v-for="tp in tpRoutes" :key="tp.path">
+                <RouterLink :to="tp.path" active-class="menu-active">
+                  {{ tp.meta?.title }}
+                </RouterLink>
+              </li>
+            </ul>
+          </details>
+        </li>
         <li>
           <details>
             <summary :class="{ 'menu-active': route.path.startsWith('/ex') }">
