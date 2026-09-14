@@ -61,12 +61,18 @@ const lesAmis = ref<friend[]>([
     premium: true
   }
 ]);
+
+function togglePremium(id:string){
+  const ami = lesAmis.value.find(a => a.id ===id)
+  if (ami) ami.premium = !ami.premium
+}
+
 </script>
 
 <template>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <div v-for="friend in lesAmis" :key="friend.id">
-      <OneFriend :id='friend.id' :name="friend.name" :phone="friend.phone" :email="friend.email" :premium="friend.premium"/>
+      <OneFriend :friend="friend" @toggle-premium="togglePremium"/>
     </div>
   </div>
 
