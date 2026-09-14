@@ -1,11 +1,31 @@
 <script setup lang="ts">
 
  const props = defineProps({
-   id: String,
-   name: String,
-   phone: String,
-   email: String,
-   premium: Boolean
+   id: {
+     String,
+     required: true,
+     default: '0'
+   },
+   name: {
+     String,
+     required: true,
+     default: 'Jean Michel'
+   },
+   phone: {
+     String,
+     required: true,
+     default: '+33000000000'
+   },
+   email: {
+     String,
+     required: true,
+     default: 'jeanmichel.trogneux@gmail.com'
+   },
+   premium: {
+     Boolean,
+     required: true,
+     default: false
+   }
  })
 
 </script>
