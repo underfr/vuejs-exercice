@@ -3,12 +3,22 @@ import { ref } from "vue";
 
 
 let nb = ref<number>(0)
+let username = ref('')
 const increase = ()=>{
   return nb.value = nb.value + 100
 }
 const decrease = ()=>{
   const newNb = nb.value - 55
   nb.value = newNb < 0 ? 0 : newNb
+}
+
+function afficherNameUser(){
+  console.log('on est dans la fonction')
+  if (username.value == ''){
+    return "test"
+  } else {
+    return "autre test"
+  }
 }
 
 </script>
@@ -21,6 +31,7 @@ const decrease = ()=>{
         <button class="btn btn-circle btn-outline" @click.right.prevent="decrease()">-</button>
         <p class="text-4xl font-bold tabular-nums w-16 text-center">{{ nb }}</p>
         <button class="btn btn-circle btn-primary" @click="increase()">+</button>
+        <p>{{afficherNameUser()}}</p>
       </div>
     </div>
   </div>
