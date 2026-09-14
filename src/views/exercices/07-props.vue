@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import OneFriend from "../../components/OneFriend.vue";
+import NewFriend from "../../components/NewFriend.vue";
 
 interface friend {
   id: string,
@@ -40,7 +41,7 @@ const lesAmis = ref<friend[]>([
     premium: true
   },
   {
-    id: 'yoyoyo',
+    id: 'yoyoyoyo',
     name: "JAROD",
     phone: '+338765477',
     email: 'jAROD@seagal.com',
@@ -67,12 +68,23 @@ function togglePremium(id:string){
   if (ami) ami.premium = !ami.premium
 }
 
+function deleteFriend(id: any){
+  const ami = lesAmis.value.findIndex(a=>a.id===id)
+  if (ami) lesAmis.value.splice(ami,1)
+  console.log(ami)
+}
+
+function addFriend(friend: friend){
+  lesAmis.value.push(friend)
+}
+
 </script>
 
 <template>
+  <NewFriend @create-friend="addFriend"/>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <div v-for="friend in lesAmis" :key="friend.id">
-      <OneFriend :friend="friend" @toggle-premium="togglePremium"/>
+      <OneFriend :friend="friend" @toggle-premium="togglePremium" @delete="deleteFriend"/>
     </div>
   </div>
 

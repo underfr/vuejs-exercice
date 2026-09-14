@@ -12,7 +12,7 @@
 
  const props = defineProps<{ friend: Friend, isShown?: boolean}>()
  const showDetail = ref(props.isShown)
- const emit = defineEmits<{'toggle-premium': [id: string]}>()
+ const emit = defineEmits<{'toggle-premium': [id: string], 'delete': [id: string]}>()
 
 </script>
 
@@ -43,6 +43,7 @@
           </p>
         </div>
         <button class="btn btn-secondary" @click="emit('toggle-premium', props.friend.id)">Update Premium</button>
+        <button class="btn btn-error" @click="emit('delete', props.friend.id)">Delete</button>
         <button class="btn btn-primary" @click="showDetail = !showDetail">Afficher les détails</button>
       </div>
     </div>
